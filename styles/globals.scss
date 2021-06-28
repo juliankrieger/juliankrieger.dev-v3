@@ -1,0 +1,63 @@
+@use "../assets/globals";
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: globals.$font-primary;
+  color: globals.$color-text;
+  background-color: globals.$color-bg;
+  line-height: 26px;
+
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+a {
+  color: globals.$color-primary;
+  text-decoration: underline;
+  &:visited {
+    color: globals.$color-text-secondary;
+  }
+}
+pre, code, p {
+  font-size: 14px;
+}
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1em;
+  color: #ff6188;
+}
+
+pre {
+  background-color: #f5f2f0;
+  line-height: 22px;
+
+  code {
+    border-radius: 0;
+    background-color: unset;
+  }
+}
+
+code {
+  color: black;
+  border-radius: 2px;
+  padding: 1px;
+  background-color: #f5f2f0;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  ul {
+    padding-inline-start: 20px;
+  }
+}
