@@ -1,0 +1,15 @@
+@use "../assets/scss/globals";
+
+.GalleryItem {
+    line-height: 20px;
+}
+
+.Title {
+    margin-bottom: .5rem;
+}
+
+.Tag {
+    color: globals.$color-primary;
+    display: inline;
+    font-size: .8rem;
+}

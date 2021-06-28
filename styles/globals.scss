@@ -1,4 +1,4 @@
-@use "../assets/globals";
+@use "../assets/scss/globals";
 
 html,
 body {
@@ -60,4 +60,8 @@ li {
   ul {
     padding-inline-start: 20px;
   }
+}
+
+p {
+  margin: 0;
 }
