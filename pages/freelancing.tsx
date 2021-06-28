@@ -1,7 +1,7 @@
 import styles from './index.module.scss';
 import React from 'react';
 import Image from 'next/image';
-import DigiPIL from '../assets/images/DigiPIL.png';
+import DigiPIL from '../assets/images/DigiPIL.jpg';
 import style from './freelancing.module.scss';
 import { GalleryItem } from '../components/GalleryItem';
 
