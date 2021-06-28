@@ -10,4 +10,5 @@ module.exports = withMDX({
     // your project has ESLint errors.
     ignoreDuringBuilds: true,
   },
+  target: "serverless"
 })
