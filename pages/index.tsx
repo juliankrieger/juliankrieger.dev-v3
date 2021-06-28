@@ -19,11 +19,14 @@ export default function Home() {
         <ul>
           <li>- Frontend Development:
             <ul> - JavaScript, TypeScript</ul>
+            <ul> - Vue.js v2 &amp; v3, Vuetify</ul>
+            <ul> - React.js, Redux, Next.js, Gatsby</ul>
+            <ul> - Shopify</ul>
           </li>
         </ul>
         <ul>
           <li>- Backend Development:
-            <ul> - Node.js, Rust, Python, C#</ul>
+            <ul> - Node.js, Rust, Python, GO, C#</ul>
           </li>
         </ul>
         <ul>
