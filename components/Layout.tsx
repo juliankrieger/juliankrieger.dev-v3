@@ -28,6 +28,12 @@ export const Layout: React.FC = ({ children }) => {
                         </li>
                         -
                         <li>
+                            <Link href="/publications">
+                                <a>Publications</a>
+                            </Link>
+                        </li>
+                        -
+                        <li>
                             <Link href="/resume">
                                 <a>Resume</a>
                             </Link>

@@ -1,0 +1,25 @@
+@use "../assets/scss/globals";
+
+.PublicationItem {
+    line-height: 20px;
+    
+    margin-bottom: 2rem;
+}
+
+.Title {
+    margin-bottom: .5rem;
+    color: globals.$color-primary;
+    margin-top: .5rem;
+}
+
+.Tag {
+    color: globals.$color-primary;
+    display: inline;
+    font-size: .8rem;
+}
+
+.Date {
+    margin-bottom: 0;
+    opacity: .75;
+
+}

@@ -8,7 +8,7 @@ import { GalleryItem } from '../components/GalleryItem';
 export const Freelancing: React.FC = () => {
     return (
         <div>
-            <h3>Freelancing</h3>
+            <h2>Freelancing</h2>
             <p>I do freelancing on the side when I get the chance. When I have the choice, this happens mostly
                 on the <a href={"https://www.mongodb.com/mern-stack"}>MERN</a> Stack, although I like switching up
                 Express with alternative server solutions. If a customer wishes for static rendering and small bundles,
