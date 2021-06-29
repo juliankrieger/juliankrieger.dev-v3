@@ -12,8 +12,7 @@ export const Freelancing: React.FC = () => {
             <p>I do freelancing on the side when I get the chance. When I have the choice, this happens mostly
                 on the <a href={"https://www.mongodb.com/mern-stack"}>MERN</a> Stack, although I like switching up
                 Express with alternative server solutions. If a customer wishes for static rendering and small bundles,
-                I reach for <a href={"https://nextjs.org/"}>Next.js</a>. To make deployment and delivery easy, I bundle all my apps inside 
-                <a href={"https://www.docker.com/"}>Docker</a>, but deploying on serverless platforms is also possible.
+                I reach for <a href={"https://nextjs.org/"}>Next.js</a>. To make deployment and delivery easy, I bundle all my apps inside <a href={"https://www.docker.com/"}>Docker</a>, but deploying on serverless platforms is also possible.
             </p>
 
             <h4>Gallery</h4>
