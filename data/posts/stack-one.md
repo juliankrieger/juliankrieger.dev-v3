@@ -121,7 +121,7 @@ changeme = 'IlYb'[::-1] #reverse this
 print(padding + changeme)
 ```
 
-Using our corrected script, we can see that we successfully solved this challenge!
+Using our newly adjusted script, we can see that we successfully solved this challenge!
 
 ```
 > ./stack-one $(python3 stack-one.py) 
