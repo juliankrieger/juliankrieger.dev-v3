@@ -71,7 +71,7 @@ The goal of this challenge is to change `changeme` to `0x496c5962`. The solution
 
 One solution for this is to convert `0x496c5962` into an ASCII string. Most ASCII characters fall into a range between 0 and 255, a.k.a 2 to the power of 8 possible characters, or one byte. Since a single hex digit stores 4 bit of information, we split `0x496c5962` into small packets for two digits each. This leaves us with `0x49` `0x6c` `0x59` and `0x62`. Translate that into human readable ASCII characters and you get `IlYb`. 
 
-Now we now that to solve this challenge, we need to pipe 64 characters into `argv` to pad the buffer into overflowing and `IlYb` to set `changeme` to `0x496c5962`. To do this in a more simpler way, we can yet again use python four our needs: 
+To solve this challenge, we need to pipe 64 characters into `argv` to pad the buffer into overflowing and `IlYb` to set `changeme` to `0x496c5962`. To do this in a more simpler way, we can yet again use python four our needs: 
 
 ``` 
 # stack-one.py
