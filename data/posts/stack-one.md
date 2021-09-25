@@ -50,6 +50,7 @@ int main(int argc, char **argv) {
 
   exit(0);
 }
+```
 
 When looking at the code, the following line catches the eye immediately:
 
