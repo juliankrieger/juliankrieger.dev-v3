@@ -1,5 +1,5 @@
 ---
-title: Stack-One
+title: Exploit Education > Phoenix > Stack-One
 date: '2021-09-25'
 draft: false
 --- 

