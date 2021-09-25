@@ -52,7 +52,9 @@ int main(int argc, char **argv) {
 }
 ````
 
-Looking at the file, we can see that the code uses the vulnerable `gets` function. It copies all input from STDIN to the buffer without checking if the input's size first. If we provide a string that is larger than the size of the allocated buffer, we can overwrite what comes after it. Since `buffer` is of type `char[64]`, we can write 64 chars into stdin to 'pad' the input. After padding, we can then overwrite whatever comes after `buffer`, in this case `changeme`. Since writing and counting out 64 characters is a bit troublesome in `qemu`, we write a quick python file that does what we want.
+Looking at the file, we can see that the code uses the vulnerable `gets` function. It copies all input from STDIN to the buffer without checking the input's size first. If we provide a string that is larger in the number of characters than the size of the allocated buffer, we can overwrite values in memory that come after it. 
+
+Since `buffer` is of type `char[64]`, we can write 64 chars into stdin to 'pad' the input. After padding, we can then overwrite whatever comes after `buffer`, in this case `changeme`. Since writing and counting out 64 characters is a bit troublesome in `qemu`, we write a quick python file that does what we want.
 
 ``` 
 # stack-zero.py
