@@ -116,7 +116,7 @@ This can be achieved by changing our little python snippet accordingly:
 # stack-one.py
 
 padding = '0' * 64;
-changeme = 'IlYb'[::-1] #reverse this
+changeme = 'IlYb'[::-1] # short syntax for reversing a string
 
 print(padding + changeme)
 ```
