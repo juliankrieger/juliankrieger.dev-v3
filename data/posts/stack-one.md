@@ -67,6 +67,8 @@ struct {
   } locals;
 ```
 
+
+
 The goal of this challenge is to change `changeme` to `0x496c5962`. The solution to this exercise is similar to the one we used for `Stack-Zero`: We write 64 characters into `argv` at the start of the program and `0x496c5962` after that. We want to write the actual number `0x496c5962` into `changeme`, but our terminal only provides us the with possibility to enter characters. 
 
 One solution for this is to convert `0x496c5962` into an ASCII string. Most ASCII characters fall into a range between 0 and 255, a.k.a 2 to the power of 8 possible characters, or one byte. Since a single hex digit stores 4 bit of information, we split `0x496c5962` into small packets for two digits each. This leaves us with `0x49` `0x6c` `0x59` and `0x62`. Translate that into human readable ASCII characters and you get `IlYb`. 
@@ -93,7 +95,10 @@ changeme = '\x49\x6c\x59\x62'
 print(padding + changeme)
 ```
 
-Calling `./stack-one $(python3 stack-one.py)` should print the message `Well done, you have successfully set changeme to the correct value` for us.
+
+
+Calling `./stack-one $(python3 stack-one.py)` should print the following message:
+`> Well done, you have successfully set changeme to the correct value`
 
 ```
 > ./stack-one $(python3 stack-one.py) 
