@@ -1,16 +1,16 @@
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next';
-import { useRouter } from 'next/router'
-import { debug } from '../../lib/debug';
 import markdownToHtml from '../../lib/markdownToHtml';
 import { getPostWithId as getPostWithSlug, getSortedPostsData } from '../../lib/postData';
 import {Post as PostT} from '../../types/Post';
+import style from './blog.module.scss';
 
 function Post({ post, content }: {post: PostT, content: string}) {
   return (
-    <div className="max-w-2xl mx-auto">
+    <div>
       <h1>{post.title}</h1>
       <div
         dangerouslySetInnerHTML={{ __html: content }}
+        className={style.paragraph}
       />
     </div>
   )
@@ -40,7 +40,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
   // If the route is like /posts/1, then params.id is 1
   let post;
   let content;
-  console.log(params)
   if(params?.slug) {
     post = getPostWithSlug(params.slug as string);
     if(post) {

@@ -2,7 +2,7 @@
 title: Exploit Education > Phoenix > Stack-One
 date: '2021-09-25'
 draft: false
---- 
+---
 
 Stack-One is an ASCII challenge. It's described by the following C code:
 
@@ -69,13 +69,13 @@ struct {
 
 
 
-The goal of this challenge is to change `changeme` to `0x496c5962`. The solution to this exercise is similar to the one we used for `Stack-Zero`: We write 64 characters into `argv` at the start of the program and `0x496c5962` after that. We want to write the actual number `0x496c5962` into `changeme`, but our terminal only provides us the with possibility to enter characters. 
+The goal of this challenge is to change `changeme` to `0x496c5962`. The solution to this exercise is similar to the one we used for `Stack-Zero`: We write 64 characters into `argv` at the start of the program and `0x496c5962` after that. We want to write the actual number `0x496c5962` into `changeme`, but our terminal only provides us the with possibility to enter characters.
 
-One solution for this is to convert `0x496c5962` into an ASCII string. Most ASCII characters fall into a range between 0 and 255, a.k.a 2 to the power of 8 possible characters, or one byte. Since a single hex digit stores 4 bit of information, we split `0x496c5962` into small packets for two digits each. This leaves us with `0x49` `0x6c` `0x59` and `0x62`. Translate that into human readable ASCII characters and you get `IlYb`. 
+One solution for this is to convert `0x496c5962` into an ASCII string. Most ASCII characters fall into a range between 0 and 255, a.k.a 2 to the power of 8 possible characters, or one byte. Since a single hex digit stores 4 bit of information, we split `0x496c5962` into small packets for two digits each. This leaves us with `0x49` `0x6c` `0x59` and `0x62`. Translate that into human readable ASCII characters and you get `IlYb`.
 
-To solve this challenge, we need to pipe 64 characters into `argv` to pad the buffer into overflowing and `IlYb` to set `changeme` to `0x496c5962`. To do this in an easy way, we can yet again use python for our needs: 
+To solve this challenge, we need to pipe 64 characters into `argv` to pad the buffer into overflowing and `IlYb` to set `changeme` to `0x496c5962`. To do this in an easy way, we can yet again use python for our needs:
 
-``` 
+```
 # stack-one.py
 
 padding = '0' * 64
@@ -86,7 +86,7 @@ print(padding + changeme)
 
 Note that in python, instead of converting a known string of numbers to ASCII characters, we could just print bytes instead!
 
-``` 
+```
 # stack-one.py
 
 padding = '0' * 64
@@ -101,7 +101,7 @@ Calling `./stack-one $(python3 stack-one.py)` should print the following message
 `> Well done, you have successfully set changeme to the correct value`
 
 ```
-> ./stack-one $(python3 stack-one.py) 
+> ./stack-one $(python3 stack-one.py)
 
 > Getting closer! changeme is currently 0x62596c49, we want 0x496c5962
 ```
@@ -112,14 +112,14 @@ Huh. Seems like we did indeed change `changeme`, but it's value is *reversed*. T
 
 Since we are on an x86 linux system, we know that we're using `little-endian`. The following image explains the difference in storage layout:
 
-![Endianness](/assets/Endianness.png)
+<img src="/Endianness.png" alt="endianness" width="50%" style="margin: 0 auto; display: block;"/>
 
-Values in `little-endian` seem to be *reversed* compared to how a human would naturally read them. To spare programmers the pain of having to write values reversed if their host system is little endian, compilers automatically look up if their system is little endian and emit any value in the approriate format. If we changed `changeme` to `0x496c5962` *inside* `stack-zero-c` and compiled it via `gcc`, our compiler would write it as `0x62596c49` *in memory*, pointing to its "end" `0x49` as the first value. 
+Values in `little-endian` seem to be *reversed* compared to how a human would naturally read them. To spare programmers the pain of having to write values reversed if their host system is little endian, compilers automatically look up if their system is little endian and emit any value in the approriate format. If we changed `changeme` to `0x496c5962` *inside* `stack-zero-c` and compiled it via `gcc`, our compiler would write it as `0x62596c49` *in memory*, pointing to its "end" `0x49` as the first value.
 
 Our mistake immediately becomes clear: We naturally write our target value 0x496c5962 from left to right into `stack-one`'s arguments. When its `main` function stores the `argv[1]` value in `locals.buffer`, causing a buffer overflow, it writes `0x496c5962` into `changeme`'s memory location *without any compiler intervention*. In memory, `changeme` reads `0x496c5962` but is read from right to left because our system is little-endian. To correct for this, we just have to reverse `0x496c5962` so it fits inside memory in the correct way.
 
 This can be achieved by changing our little python snippet accordingly:
-``` 
+```
 # stack-one.py
 
 padding = '0' * 64;
@@ -131,7 +131,7 @@ print(padding + changeme)
 Using our newly adjusted script, we can see that we successfully solved this challenge!
 
 ```
-> ./stack-one $(python3 stack-one.py) 
+> ./stack-one $(python3 stack-one.py)
 
 > Well done, you have successfully set changeme to the correct value
 ```

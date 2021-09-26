@@ -16,7 +16,7 @@ export default async function markdownToHtml(markdown: any) {
   const result = await remark().use(remarkFrontmatter)
   .use(filterChildren, { filter: c => c.type !== 'yaml' })
   .use(html, {
-    sanitize: true,
+    sanitize: false,
   }).process(markdown)
   return result.toString()
 }
