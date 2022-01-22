@@ -3,7 +3,6 @@ import path from 'path'
 import matter from 'gray-matter'
 import { Post } from '../types/Post'
 import { postsDirectory } from './paths'
-import markdownToHtml from './markdownToHtml'
 
 export function getSortedPostsData(): Post[] {
   // Get file names under /posts
