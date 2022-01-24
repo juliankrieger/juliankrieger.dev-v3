@@ -38,7 +38,7 @@ export default function Home() {
       <div>
         <h5>### About</h5>
         <p>I enjoy learning about new programming languages in my free time.
-        Recently, I've been infatuated with <a href={"https://www.rust-lang.org/"}>Rust</a>.</p>
+        Recently, I have been infatuated with <a href={"https://www.rust-lang.org/"}>Rust</a>.</p>
       </div>
       <div>
         <h5>### Noteable Projects</h5>

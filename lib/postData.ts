@@ -12,11 +12,12 @@ export function getSortedPostsData(): Post[] {
     const id = fileName.replace(/\.mdx$/, '')
 
     // Read markdown file as string
-    const fullPath = path.join(postsDirectory, fileName)
-    const slug = path.relative(postsDirectory, fullPath).split('.').slice(0, -1).join('.'); 
-    const fileContents = fs.readFileSync(fullPath, 'utf8')
+    const fullPath = path.join(postsDirectory, fileName);
+    const fileContents = fs.readFileSync(fullPath, 'utf8');
     // Use gray-matter to parse the post metadata section
-    const matterResult = matter(fileContents)
+    const matterResult = matter(fileContents);
+
+    let slug = path.relative(postsDirectory, fullPath).split('.').slice(0, -1).join('.');  
 
     // Combine the data with the id
     const res =  {

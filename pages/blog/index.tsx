@@ -3,6 +3,11 @@ import { getSortedPostsData } from '../../lib/postData';
 import Link from 'next/link'
 import { Post } from '../../types/Post';
 
+export const config = {
+  unstable_runtimeJS: false,
+  unstable_JsPreload: false
+}
+
 // TODO: Need to fetch `posts` (by calling some API endpoint)
 //       before this page can be pre-rendered.
 function Blog({ allPostsData }: InferGetStaticPropsType<typeof getStaticProps>) {
