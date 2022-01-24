@@ -1,5 +1,5 @@
 import React from 'react';
-import Image from 'next/image';
+import {Image} from '../components/Image';
 import type { ImageProps } from 'next/image';
 import styles from './GalleryItem.module.scss';
 
@@ -22,7 +22,7 @@ export const GalleryItem: React.FC<GalleryItemProps> = ({
             <p>{description}</p>
             <ul>
                 {
-                    tags.map((tag, idx) => <li className={styles.Tag}>{idx !== 0 && " - "}{tag}</li>)
+                    tags.map((tag, idx) => <li className={styles.Tag} key={idx}>{idx !== 0 && " - "}{tag}</li>)
                 }
             </ul>
         </div>

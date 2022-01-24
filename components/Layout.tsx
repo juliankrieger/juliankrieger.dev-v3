@@ -34,6 +34,12 @@ export const Layout: React.FC = ({ children }) => {
                         </li>
                         -
                         <li>
+                            <Link href="/gifts">
+                                <a>Gifts</a>
+                            </Link>
+                        </li>
+                        -
+                        <li>
                             <Link href="/resume">
                                 <a>Resume</a>
                             </Link>
