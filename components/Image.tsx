@@ -9,7 +9,8 @@ const myLoader = (props: LoaderProps) => {
 }
 
 export const Image = (props: ImageProps) => {
-    return <NextImage {...props} loader={myLoader}>
+
+    return <NextImage {...props} loader={myLoader} layout='responsive' loading='lazy' unoptimized>
 
     </NextImage>
 }

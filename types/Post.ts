@@ -4,6 +4,6 @@ export interface Post {
     slug: string;
     title: string;
     fullPath: string;
-    fileContents: string;
+    content: string;
     draft: boolean;
 }

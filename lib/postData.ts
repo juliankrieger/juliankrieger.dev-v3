@@ -9,26 +9,25 @@ export function getSortedPostsData(): Post[] {
   const fileNames = fs.readdirSync(postsDirectory)
   const allPostsData = fileNames.map(fileName => {
     // Remove ".md" from file name to get id
-    const id = fileName.replace(/\.mdx$/, '')
+    const id = fileName.replace(/\.md$/, '')
 
     // Read markdown file as string
     const fullPath = path.join(postsDirectory, fileName);
     const fileContents = fs.readFileSync(fullPath, 'utf8');
     // Use gray-matter to parse the post metadata section
-    const matterResult = matter(fileContents);
+    const {content, data} = matter(fileContents);
 
     let slug = path.relative(postsDirectory, fullPath).split('.').slice(0, -1).join('.');  
 
     // Combine the data with the id
-    const res =  {
+    return {
       id,
-      ...matterResult.data,
+      ...data,
       fullPath,
       slug,
-      fileContents
+      content
     }
 
-    return res;
   })
   // Sort posts by date
   // @ts-ignore
