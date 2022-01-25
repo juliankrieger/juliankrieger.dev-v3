@@ -3,3 +3,7 @@
 publish = "out"
 
 command = "npm run build-netlify"
+
+[build.environment]
+
+NODE_VERSION = "16"
