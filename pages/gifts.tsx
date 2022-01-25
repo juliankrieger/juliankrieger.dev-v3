@@ -43,7 +43,7 @@ export const Gifts: React.FC= () => {
             <ul>
             {
                 data?.reading_log_entries.map(entry => (
-                    <li>- {entry.work.title} by {entry.work.author_names[0]} ({entry.work.first_publish_year})</li>
+                    <li key={entry.work.title + "---" + entry.work.author_names[0]}>- {entry.work.title} by {entry.work.author_names[0]} ({entry.work.first_publish_year})</li>
                 ))
             }
             </ul>
