@@ -1,3 +1,4 @@
+import capitalize from "capitalize";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
@@ -28,6 +29,24 @@ export const Gifts: React.FC= () => {
         })
     }, [])
 
+    const formatEntry = (entry: OpenLibraryResponse['reading_log_entries'][0]) => {
+        const title = entry.work.title;
+        const author = entry.work.author_names[0];
+        const publishedDate = entry.work.first_publish_year;
+
+        const formattedTitle = capitalize.words(title);
+        
+        const searchString = title + " " + author;
+        const normalizedSearchString = searchString.replace(/[^a-zA-Z ]/g, " "); 
+        const searchWords = normalizedSearchString.split(" ").map(w => w.toLowerCase()).join("+");
+
+        return (
+            <li key={title + "---" + author}>
+                - <a href={`https://www.amazon.de/-/en/s?k=${searchWords}&dm=true&language=en`}>{formattedTitle}</a> by {author} ({publishedDate})
+            </li>
+        );
+    }
+
     return (
         <div>
             <h2>Gifts</h2>
@@ -39,12 +58,10 @@ export const Gifts: React.FC= () => {
                 Note: I am currently building a small webservice to display my wanted items here. Amazon has sadly shut down its wishlist API.
             </p>
             <h3>Books</h3>
-            <p>Thanks to <b>Open Library</b>, you can find a list of books I want to read below</p>
+            <p>Thanks to <b>Open Library</b>, you can find a list of books I want to read below: </p>
             <ul>
             {
-                data?.reading_log_entries.map(entry => (
-                    <li key={entry.work.title + "---" + entry.work.author_names[0]}>- {entry.work.title} by {entry.work.author_names[0]} ({entry.work.first_publish_year})</li>
-                ))
+                data?.reading_log_entries.map(formatEntry)
             }
             </ul>
         </div>
