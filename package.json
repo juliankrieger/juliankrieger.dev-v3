@@ -2,9 +2,11 @@
   "name": "juliankrieger.dev-v3",
   "version": "0.1.0",
   "private": true,
+  "engines": {"node": "16"},
   "scripts": {
     "dev": "NODE_OPTIONS=--openssl-legacy-provider next dev",
     "build": "NODE_OPTIONS=--openssl-legacy-provider next build && next export",
+    "build-netlify": "next build && next export",
     "start": "next start",
     "lint": "next lint",
     "export": "next export"
