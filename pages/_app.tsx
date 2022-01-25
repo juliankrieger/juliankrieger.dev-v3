@@ -20,6 +20,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       <Head>
         <title>juliankrieger.dev {title && adjustedTitle} </title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta name="description" content="Julian Krieger's personal website. "></meta>
       </Head>
       <Layout>
         <Component {...pageProps} />

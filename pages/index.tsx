@@ -42,11 +42,11 @@ export default function Home() {
       </div>
       <div>
         <h5>### Noteable Projects</h5>
-        - I wrote a <b>systemd</b> driver for a specific type of SNES Controller from iBuffalo. You can find it <a href={"https://github.com/juliankrieger/iBuffalo-Snes-Controller-Driver"}>here</a>.
+        - I wrote a <a href={"https://github.com/juliankrieger/iBuffalo-Snes-Controller-Driver"}><b>systemd</b> driver for a specific type of SNES Controller from iBuffalo.</a>.
         <br/>
-        - I use a Durgod Hades Keyboard to develop. Making it work it with German umlauts was not easy, so <a href={"https://github.com/juliankrieger/Durgod-Hades-68-German-Umlaute"}>here</a> is my profile for it.
+        - I use an ANSI US 60% keyboard for development. Making it work it with German umlaute was not easy, so I created <a href={"https://github.com/juliankrieger/Durgod-Hades-68-German-Umlaute"}>a custom Hera profile for my Durgod Hades</a>
         <br/>
-        - If you play Call of Duty: Warzone and it keeps crashing, try <a href={"https://github.com/juliankrieger/CODWarzoneCrashFixer"}>this</a> tool.
+        - If you play Call of Duty: Warzone and it keeps crashing, try <a href={"https://github.com/juliankrieger/CODWarzoneCrashFixer"}>my COD:Warzone crashfixer tool</a>.
       </div>
     </div>
   )
