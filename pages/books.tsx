@@ -37,7 +37,7 @@ export const Books: React.FC= () => {
         const formattedTitle = capitalize.words(title);
         
         const searchString = title + " " + author;
-        const normalizedSearchString = searchString.replace(/[^a-zA-Z ]/g, " "); 
+        const normalizedSearchString = searchString.replace(/[^a-zA-Z0-9 ]/g, " "); 
         const searchWords = normalizedSearchString.split(" ").map(w => w.toLowerCase()).join("+");
 
         return (
