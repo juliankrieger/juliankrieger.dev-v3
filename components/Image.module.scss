@@ -1,0 +1,11 @@
+.Image {
+
+    &.MarkdownImage {
+        display: flex;
+    }
+}
+
+.MarkdownImageContainer {
+    display: flex;
+    justify-content: center;
+}

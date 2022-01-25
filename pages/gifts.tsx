@@ -11,11 +11,11 @@ export const Gifts: React.FC<GiftProps> = ({data}) => {
         <div>
             <h2>Gifts</h2>
             <p>
-                If you're looking to gift me something (for whatever reason), you can find my Amazon wish list <Link href={data}>here</Link>
+                If you are looking to gift me something (for whatever reason), you can find my Amazon wish list <Link href={data}>here</Link>
             </p>
             <br/>
             <p>
-                Note: I'm currently building a small webservice to display my wanted items here. Amazon has sadly shut down its wishlist API.
+                Note: I am currently building a small webservice to display my wanted items here. Amazon has sadly shut down its wishlist API.
             </p>
         </div>
     )
@@ -24,7 +24,7 @@ export const Gifts: React.FC<GiftProps> = ({data}) => {
 export default Gifts;
 
 // This gets called on every request
-export async function getServerSideProps() {
+export async function getStaticProps() {
 
     const data = "https://www.amazon.de/hz/wishlist/ls/DI5WT15AHPLM?ref_=wl_share";
   

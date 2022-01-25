@@ -6,12 +6,17 @@ import imageSize from 'rehype-img-size';
 import { getPostWithId as getPostWithSlug, getSortedPostsData } from '../../lib/postData';
 import { Post as PostT } from '../../types/Post';
 import style from './blog.module.scss';
-import { Image } from '../../components/Image';
+import { Image, MarkdownImage } from '../../components/Image';
 import React from 'react';
 
 interface PostProps {
   post: PostT,
   source: MDXRemoteSerializeResult<Record<string, unknown>>
+}
+
+interface MDXRemoteImageProps {
+  src: string;
+  alt: string;
 }
 
 function Post({ post, source }: PostProps) {
@@ -22,9 +27,12 @@ function Post({ post, source }: PostProps) {
         className={style.paragraph}
       >
         <MDXRemote {...source} components={{
-          img: (props: any) => {
-            console.log(props)
-            return <Image width="50%" height="auto" {...props} layout="responsive" loading="lazy"></Image>
+          img: (props: MDXRemoteImageProps) => {
+
+            const {src, alt} = props;
+            const [altString, ...options] = alt.split("#");
+
+            return <MarkdownImage src={src} alt={altString}></MarkdownImage>
           }
         }} />
       </div>
@@ -62,6 +70,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     if (post && post.content) {
       source = await serialize(post.content, {
         mdxOptions: {
+          // @ts-ignore
           rehypePlugins: [[imageSize, { dir: "public" }]],
         }
       });

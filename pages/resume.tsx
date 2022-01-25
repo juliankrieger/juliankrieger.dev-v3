@@ -1,4 +1,6 @@
-export default () => (
+import React from 'react';
+
+const Resume = () => (
     <div>
         <h2>
             Resume
@@ -10,3 +12,5 @@ export default () => (
         </p>
     </div>
 )
+
+export default Resume;
