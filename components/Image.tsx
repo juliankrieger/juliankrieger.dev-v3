@@ -25,5 +25,5 @@ export const Image = (props: ImageProps) => {
 }
 
 export const MarkdownImage = (props: ImageProps) => {
-  return <div className={styles.MarkdownImageContainer}><Image {...props} className={styles.MarkdownImage}/></div>
+  return <span className={styles.MarkdownImageContainer}><Image {...props} className={styles.MarkdownImage}/></span>
 }
