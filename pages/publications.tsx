@@ -1,10 +1,7 @@
 import styles from './index.module.scss';
 import React from 'react';
-import Image from 'next/image';
-import DigiPIL from '../assets/images/DigiPIL.jpg';
 import style from './publications.module.scss';
 import { PublicationItem } from '../components/PulibcationItem';
-import { useRouter } from 'next/router';
 
 export const Publications: React.FC = () => {
 
