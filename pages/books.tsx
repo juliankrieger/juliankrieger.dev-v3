@@ -17,7 +17,7 @@ interface OpenLibraryResponse {
 
 const OPEN_LIBRARY_URL = "https://openlibrary.org/people/juliankrieger/books/want-to-read.json";
 
-export const Gifts: React.FC= () => {
+export const Books: React.FC= () => {
 
     const [data, setData] = useState<OpenLibraryResponse | null>(null)
 
@@ -49,7 +49,7 @@ export const Gifts: React.FC= () => {
 
     return (
         <div>
-            <h2>Gifts</h2>
+            <h2>Books</h2>
             <p>
                 If you are looking to gift me something (for whatever reason), you can find <Link href={"https://www.amazon.de/hz/wishlist/ls/DI5WT15AHPLM?ref_=wl_share"}>my Amazon wish list here</Link>
             </p>
@@ -68,4 +68,4 @@ export const Gifts: React.FC= () => {
     )
 }
 
-export default Gifts;
+export default Books;
