@@ -17,10 +17,10 @@ export const Image = (props: ImageProps) => {
     return <img
       srcSet={responsiveImage.srcSet}
       src={responsiveImage.src}
-      sizes='(min-width: 2048px): 1920px, (min-width: 1920px) 1024px, (min-width: 1024px) 600px, 100vw'
+      sizes='(min-width: 2048px): 1920px, (min-width: 1920px) 1024px, (min-width: 1024px) 600px, 95vw'
       loading="lazy"
       {...restProps}
-      className={classNames(props.className, styles.Image)}
+      className={classNames([styles.Image, props.className])}
   />
 }
 

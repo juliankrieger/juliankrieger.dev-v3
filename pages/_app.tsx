@@ -1,4 +1,4 @@
-import '../styles/globals.scss'
+import '../assets/scss/overrides.scss';
 import type { AppProps } from 'next/app'
 import React from 'react'
 import { Layout } from '../components/Layout'
