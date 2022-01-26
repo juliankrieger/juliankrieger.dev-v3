@@ -16,7 +16,7 @@ function Blog({ allPostsData }: InferGetStaticPropsType<typeof getStaticProps>) 
       {allPostsData.map((post: Post, idx: number) => (
         <li key={idx}>
           <Link href={`/blog/${encodeURIComponent(post.slug)}`}>
-            <a>- {post.date} - {post.title}</a>
+            <a>- {post.date} - {post.title} {post.draft && '[DRAFT]'}</a>
           </Link>
         </li>
       ))}
@@ -27,7 +27,12 @@ function Blog({ allPostsData }: InferGetStaticPropsType<typeof getStaticProps>) 
 // This function gets called at build time
 export const getStaticProps: GetStaticProps = async (context) => {
 
-  const allPostsData: Post[] = getSortedPostsData().filter(post => !post.draft);
+  const allPostsData: Post[] = getSortedPostsData().filter(post => {
+    if(process.env.NODE_ENV === 'production') {
+      return !post.draft
+    }
+    return true;
+  });
 
   // By returning { props: { posts } }, the Blog component
   // will receive `posts` as a prop at build time

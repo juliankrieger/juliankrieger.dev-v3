@@ -22,7 +22,10 @@ interface MDXRemoteImageProps {
 function Post({ post, source }: PostProps) {
   return (
     <div>
-      <h1>{post.title}</h1>
+      <h1>
+        {post.title}
+        {post.draft && <span style={{float: 'right'}}>[DRAFT]</span>}
+      </h1>
       <div
         className={style.paragraph}
       >
@@ -47,7 +50,12 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const posts = getSortedPostsData();
 
   // Get the paths we want to pre-render based on posts
-  const paths = posts.filter(post => !post.draft).map((post) => ({
+  const paths = posts.filter(post => {
+    if(process.env.NODE_ENV === 'production') {
+      return !post.draft
+    }
+    return true;
+  }).map((post) => ({
     params: { slug: post.slug }
   }))
 
