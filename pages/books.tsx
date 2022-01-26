@@ -24,7 +24,8 @@ export const Books: React.FC= () => {
     useEffect(() => {
         fetch(OPEN_LIBRARY_URL)
         .then((res) => res.json())
-        .then((data) => {
+        .then((data: OpenLibraryResponse) => {
+            const sortedData = data.reading_log_entries.sort((a, b) => a.work.title.localeCompare(b.work.title))
             setData(data)
         })
     }, [])
