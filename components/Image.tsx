@@ -59,5 +59,5 @@ export const MarkdownImage = (props: MarkdownImageProps) => {
 
   const [alt, styleOptions] = generateStyleFromMarkdownOptions(options);
   
-  return <span className={styles.MarkdownImageContainer}><Image {...props} className={styles.MarkdownImage} alt={alt} style={styleOptions}/></span>
+  return <span className={styles.MarkdownImageContainer}><Image className={styles.MarkdownImage} alt={alt} style={styleOptions}/></span>
 }
