@@ -112,7 +112,7 @@ Huh. Seems like we did indeed change `changeme`, but it's value is *reversed*. T
 
 Since we are on an x86 linux system, we know that we're using `little-endian`. The following image explains the difference in storage layout:
 
-![Endianness](Endianness.png)
+![Endianness[width=50%]](Endianness.png)
 
 Values in `little-endian` seem to be *reversed* compared to how a human would naturally read them. To spare programmers the pain of having to write values reversed if their host system is little endian, compilers automatically look up if their system is little endian and emit any value in the approriate format. If we changed `changeme` to `0x496c5962` *inside* `stack-zero-c` and compiled it via `gcc`, our compiler would write it as `0x62596c49` *in memory*, pointing to its "end" `0x49` as the first value.
 

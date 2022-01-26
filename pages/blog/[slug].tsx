@@ -32,10 +32,8 @@ function Post({ post, source }: PostProps) {
         <MDXRemote {...source} components={{
           img: (props: MDXRemoteImageProps) => {
 
-            const {src, alt} = props;
-            const [altString, ...options] = alt.split("#");
-
-            return <MarkdownImage src={src} alt={altString}></MarkdownImage>
+            const {src, alt: options} = props;
+            return <MarkdownImage src={src} options={options}></MarkdownImage>
           }
         }} />
       </div>

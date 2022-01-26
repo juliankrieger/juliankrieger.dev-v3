@@ -1,17 +1,16 @@
 ---
 title: Developing naive rootskits for unix systems
-  build times
 date: '2021-11-03'
 draft: true
 --- 
 
-A recent lecture I was attending called ''Cyber Defense and Digital Forensics'' made us develop naive linux rootkits. The task was the following:
+A recent lecture I was attending called *Cyber Defense and Digital Forensics* made us develop naive linux rootkits. We were given the following tasks:
 
-- Each group will have access to an ''enemy'' group's network first, then gain access to their own network later.
-
+```
+- Each group will have access to an *enemy* group's network first, then gain access to their own network later.
 - In 3 weeks time, develop a collection of persistent linux rootkits to the best of your ability
-
 - After those 3 weeks, we'd again have 3 weeks time to find the shenanigans a different group installed on *our* system
+```
 
 A group's network existed in 8 different servers that were able to communicate in a subnet:
 
