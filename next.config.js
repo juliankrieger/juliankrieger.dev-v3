@@ -1,5 +1,6 @@
 const withPlugins = require('next-compose-plugins');
 const withOptimizedImages = require('next-optimized-images');
+const withPreact = require('next-plugin-preact');
 
 const nextJsConfig = {
 }
@@ -18,6 +19,7 @@ module.exports = withPlugins(
         }
       }
     ],
+    [withPreact]
   ],
   nextJsConfig
 )
