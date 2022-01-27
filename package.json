@@ -19,7 +19,6 @@
     "next": "12.0.7",
     "next-compose-plugins": "2.2.1",
     "next-mdx-remote": "3.0.8",
-    "next-optimized-images": "2.6.2",
     "next-plugin-preact": "3.0.6",
     "preact": "10.6.5",
     "preact-render-to-string": "5.1.19",
@@ -28,8 +27,6 @@
     "unified": "10.1.1"
   },
   "devDependencies": {
-    "react-ssr-prepass": "npm:preact-ssr-prepass@1.2.0",
-    "rehype-img-size": "0.0.2",
     "@types/capitalize": "2.0.0",
     "@types/react": "17.0.38",
     "eslint": "8.5.0",
@@ -37,10 +34,11 @@
     "imagemin-mozjpeg": "9.0.0",
     "imagemin-optipng": "8.0.0",
     "imagemin-svgo": "9.0.0",
+    "react-ssr-prepass": "npm:preact-ssr-prepass@1.2.0",
+    "rehype-img-size": "0.0.2",
     "responsive-loader": "2.3.0",
     "sass": "1.45.1",
     "scheduler": "0.20.2",
-    "sharp": "0.29.3",
     "typescript": "4.5.4"
   }
 }
