@@ -3,7 +3,7 @@ import styles from './Image.module.scss';
 import classNames from 'classnames';
 import NextImage, {ImageProps as NextImageProps} from 'next/image';
 
-type ImageProps = NextImageProps & {style: CSSProperties};
+type ImageProps = NextImageProps & {style?: CSSProperties};
 
 export const Image = ({style, className, ...restProps}: ImageProps) => {
     return <div style={style}><NextImage {...restProps} loading='lazy' className={classNames([styles.Image, className])}/></div>
