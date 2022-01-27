@@ -2,10 +2,6 @@ const withPlugins = require('next-compose-plugins');
 const withOptimizedImages = require('next-optimized-images');
 
 const nextJsConfig = {
-  images: {
-    loader: 'custom',
-    disableStaticImages: true
-  }
 }
 
 module.exports = withPlugins(

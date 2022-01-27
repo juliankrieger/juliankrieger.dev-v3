@@ -1,26 +1,15 @@
-import React, { ImgHTMLAttributes } from 'react';
+import React, { CSSProperties, ImgHTMLAttributes } from 'react';
 import styles from './Image.module.scss';
 import classNames from 'classnames';
+import NextImage, {ImageProps as NextImageProps} from 'next/image';
 
-type ImageProps = ImgHTMLAttributes<HTMLImageElement>;
+type ImageProps = NextImageProps & {style: CSSProperties};
 
-export const Image = (props: ImageProps) => {
-
-    const {src, ...restProps} = props;
-
-    const responsiveImage = require(`../assets/images/${src}?resize&sizes[]=300,sizes[]=600,sizes[]=1024,sizes[]=1600,sizes[]=1920`);
-
-    return <img
-      srcSet={responsiveImage.srcSet}
-      src={responsiveImage.src}
-      sizes='(min-width: 1600px) 1920px, (min-width: 1024px) 1600px, (min-width: 600px) 1024px, 100vw'
-      loading="lazy"
-      {...restProps}
-      className={classNames([styles.Image, props.className])}
-  />
+export const Image = ({style, className, ...restProps}: ImageProps) => {
+    return <div style={style}><NextImage {...restProps} loading='lazy' className={classNames([styles.Image, className])}/></div>
 }
 
-function generateStyleFromMarkdownOptions(options?: string) {
+function generateStyleFromMarkdownOptions(options?: string): [string, CSSProperties] {
 
   
   let alt = '';
@@ -59,5 +48,8 @@ export const MarkdownImage = (props: MarkdownImageProps) => {
 
   const [alt, styleOptions] = generateStyleFromMarkdownOptions(options);
   
-  return <span className={styles.MarkdownImageContainer}><Image className={styles.MarkdownImage} alt={alt} style={styleOptions}/></span>
+  return (
+    <span className={styles.MarkdownImageContainer}>
+      <Image className={styles.MarkdownImage} alt={alt} style={styleOptions} src={src}/>
+    </span>);
 }
