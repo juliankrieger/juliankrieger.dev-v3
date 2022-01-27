@@ -2,6 +2,8 @@ import capitalize from "capitalize";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
+const OPEN_LIBRARY_URL = "https://openlibrary.org/people/juliankrieger/books/want-to-read.json";
+
 interface OpenLibraryResponse {
     reading_log_entries: [
         {
@@ -15,38 +17,35 @@ interface OpenLibraryResponse {
     ]
 }
 
-const OPEN_LIBRARY_URL = "https://openlibrary.org/people/juliankrieger/books/want-to-read.json";
+interface BookEntryProps {
+    entry: OpenLibraryResponse['reading_log_entries'][0];
+}
 
-export const Books: React.FC= () => {
+const BookEntry: React.FC<BookEntryProps> = ({entry}) => {
+    const title = entry.work.title;
+    const author = entry.work.author_names[0];
+    const publishedDate = entry.work.first_publish_year;
 
-    const [data, setData] = useState<OpenLibraryResponse | null>(null)
+    const formattedTitle = capitalize.words(title);
+    
+    const searchString = title + " " + author;
+    const normalizedSearchString = searchString.replace(/[^a-zA-Z0-9 ]/g, " "); 
+    const searchWords = normalizedSearchString.split(" ").map(w => w.toLowerCase()).join("+");
 
-    useEffect(() => {
-        fetch(OPEN_LIBRARY_URL)
-        .then((res) => res.json())
-        .then((data: OpenLibraryResponse) => {
-            const sortedData = data.reading_log_entries.sort((a, b) => a.work.title.localeCompare(b.work.title))
-            setData(data)
-        })
-    }, [])
+    return (
+        <li key={title + "---" + author}>
+            - <a href={`https://www.amazon.de/-/en/s?k=${searchWords}&dm=true&language=en`}>{formattedTitle}</a> by {author} ({publishedDate})
+        </li>
+    );
+}
 
-    const formatEntry = (entry: OpenLibraryResponse['reading_log_entries'][0]) => {
-        const title = entry.work.title;
-        const author = entry.work.author_names[0];
-        const publishedDate = entry.work.first_publish_year;
+interface BooksProps {
+    data: OpenLibraryResponse['reading_log_entries']
+}
 
-        const formattedTitle = capitalize.words(title);
-        
-        const searchString = title + " " + author;
-        const normalizedSearchString = searchString.replace(/[^a-zA-Z0-9 ]/g, " "); 
-        const searchWords = normalizedSearchString.split(" ").map(w => w.toLowerCase()).join("+");
+export const Books: React.FC<BooksProps> = ({data}) => {
 
-        return (
-            <li key={title + "---" + author}>
-                - <a href={`https://www.amazon.de/-/en/s?k=${searchWords}&dm=true&language=en`}>{formattedTitle}</a> by {author} ({publishedDate})
-            </li>
-        );
-    }
+    //console.log(data);
 
     return (
         <div>
@@ -62,11 +61,26 @@ export const Books: React.FC= () => {
             <p>Thanks to <b>Open Library</b>, you can find a list of books I want to read below: </p>
             <ul>
             {
-                data?.reading_log_entries.map(formatEntry)
+                data.map(entry => <BookEntry entry={entry} key={entry.work.title + entry.work.author_names[0]} />)
             }
             </ul>
         </div>
     )
+}
+
+export async function getStaticProps() {
+    const res = await fetch(OPEN_LIBRARY_URL);
+    const books: OpenLibraryResponse = await res.json();
+
+    const sortedBooks = books.reading_log_entries.sort((a, b) => a.work.title.localeCompare(b.work.title))
+
+    return {
+        props: {
+            data: sortedBooks
+        },
+
+        revalidate: 60 * 60 * 12 // every half day
+    }
 }
 
 export default Books;
