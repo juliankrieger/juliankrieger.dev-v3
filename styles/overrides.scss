@@ -1,12 +1,13 @@
-@use "./globals";
+@use "./colors";
+@use './fonts';
 
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: globals.$font-primary;
-  color: globals.$color-text;
-  background-color: globals.$color-bg;
+  font-family: fonts.$font-primary;
+  color: colors.$color-text;
+  background-color: colors.$color-bg;
   line-height: 26px;
   min-height: 100vh;
 }
@@ -20,10 +21,10 @@ a {
   box-sizing: border-box;
 }
 a {
-  color: globals.$color-primary;
+  color: colors.$color-primary;
   text-decoration: underline;
   &:visited {
-    color: globals.$color-text-secondary;
+    color: colors.$color-text-secondary;
   }
 }
 pre, code, p {
