@@ -68,7 +68,7 @@ export const Books: React.FC<BooksProps> = ({data}) => {
     )
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
     const res = await fetch(OPEN_LIBRARY_URL);
     const books: OpenLibraryResponse = await res.json();
 
