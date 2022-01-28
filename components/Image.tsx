@@ -2,6 +2,7 @@ import React, { CSSProperties, ImgHTMLAttributes } from 'react';
 import styles from './Image.module.scss';
 import classNames from 'classnames';
 import NextImage, { ImageProps as NextImageProps } from 'next/image';
+import path from 'path';
 
 type ImageProps = NextImageProps & { style?: CSSProperties };
 
@@ -46,17 +47,19 @@ function generateStyleFromMarkdownOptions(options?: string): [string, CSSPropert
 
 export interface MarkdownImageProps {
   src: string;
+  width: number;
+  height: number;
   options: string;
 }
 
 export const MarkdownImage = (props: MarkdownImageProps) => {
 
-  const { src, options } = props;
+  const { options, ...restProps } = props;
 
   const [alt, styleOptions] = generateStyleFromMarkdownOptions(options);
 
   return (
     <span className={styles.MarkdownImageContainer}>
-      <Image className={styles.MarkdownImage} alt={alt} style={styleOptions} src={src} />
+      <Image className={styles.MarkdownImage} alt={alt} style={styleOptions} {...restProps} />
     </span>);
 }

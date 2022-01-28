@@ -17,6 +17,8 @@ interface PostProps {
 interface MDXRemoteImageProps {
   src: string;
   alt: string;
+  width: number;
+  height: number;
 }
 
 function Post({ post, source }: PostProps) {
@@ -32,8 +34,8 @@ function Post({ post, source }: PostProps) {
         <MDXRemote {...source} components={{
           img: (props: MDXRemoteImageProps) => {
 
-            const {src, alt: options} = props;
-            return <MarkdownImage src={src} options={options}></MarkdownImage>
+            const {alt: options, ...restProps} = props;
+            return <MarkdownImage {...restProps} options={options}></MarkdownImage>
           }
         }} />
       </div>
