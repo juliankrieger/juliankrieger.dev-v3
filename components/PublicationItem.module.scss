@@ -1,4 +1,4 @@
-@use "../styles/globals";
+@use "../styles/colors";
 
 .PublicationItem {
     line-height: 20px;
@@ -8,13 +8,13 @@
 
 .Title {
     margin-bottom: .5rem;
-    color: globals.$color-primary;
+    color: colors.$color-primary;
     margin-top: .5rem;
     line-height: 1.5rem;
 }
 
 .Tag {
-    color: globals.$color-primary;
+    color: colors.$color-primary;
     display: inline;
     font-size: .8rem;
 }

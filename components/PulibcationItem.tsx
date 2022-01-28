@@ -1,6 +1,4 @@
 import React from 'react';
-import Image from 'next/image';
-import type { ImageProps } from 'next/image';
 import styles from './PublicationItem.module.scss';
 
 interface PublicationItemProps {
