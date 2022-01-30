@@ -1,7 +1,7 @@
 const withPreact = require('next-plugin-preact');
 const withPlugins = require('next-compose-plugins');
 
-// empty plugin getting next config and returning it
+// empty plugin getting next config and returning 
 let withBundleAnalyzer = (args) => args;
 
 if (process.env.ANALYZE === 'true') {
