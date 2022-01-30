@@ -1,6 +1,7 @@
 import React from 'react';
 import style from './freelancing.module.scss';
 import { GalleryItem } from '../components/GalleryItem';
+import DigiPil from '../images/DigiPIL.jpeg';
 
 
 export const Freelancing: React.FC = () => {
@@ -18,7 +19,7 @@ export const Freelancing: React.FC = () => {
             <div className={style.GalleryGrid}>
                 <GalleryItem 
                 title={"DigiPIL"} 
-                image={{ src: 'DigiPIL.jpeg', alt: "DigiPIL Platform", placeholder: "blur" }} 
+                image={{ src: DigiPil, alt: "DigiPIL Platform", placeholder: "blur" }} 
                 description="Online Platform for seraching and managing Patient Information Leaflets (PIL). Customers can register or login and save a list of their current medications along with a list of conditions. Shows possible interactions and side effects." 
                 tags={["Proof of Concept", "Persistent Database", "Database Admin Interface", "Session Cookie Authentification", "Docker Deployment", "IBM Carbon"]} />    
             </div>
