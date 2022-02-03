@@ -1,11 +1,11 @@
 @use "../styles/colors";
 
 .Layout {
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     margin: 0 auto;
     max-width: 70vw;
-    min-height: 100vh;
 
     @media only screen and (max-width: 1024px) and (min-width: 601px) {
         max-width: 90vw;
@@ -17,8 +17,6 @@
 }
 
 .content {
-    max-height: 100vh;
-    overflow: auto;
     @media only screen and (max-width: 600px) {
         padding: 0 15px;
     }
