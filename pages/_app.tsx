@@ -23,7 +23,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <meta name="description" content="Julian Krieger's personal website. "></meta>
       </Head>
       <Layout>
-        <Component {...pageProps} />
+          <Component {...pageProps} />
       </Layout>
     </div>
   )
