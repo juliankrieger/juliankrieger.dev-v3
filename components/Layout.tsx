@@ -2,11 +2,38 @@
 import Link from 'next/link'
 import style from './Layout.module.scss';
 import classNames from 'classnames';
+import { useRouter } from 'next/router';
+import { useMemo, useState } from 'react';
 
 export const Layout: React.FC = ({ children }) => {
 
+    const router = useRouter();
+
+
+    const generateHref = (href: string, enableCRT?: boolean) => {
+
+        const query = router.query ?? {};
+
+        const obj = {
+            pathname: href,
+            query: {
+                ...query
+            }
+        }
+
+        if(enableCRT) {
+            // @ts-ignore
+            obj.query.crt = true;
+        } else if(enableCRT  === false && obj.query.crt) {
+            delete obj.query.crt;
+        }
+        return obj;
+    }
+
     return (
-        <div id='monitor'>
+        <div id='monitor' className={classNames({
+            'crt-enabled': router.query.crt
+        })}>
             <div id='screen'>
                 <div id='crt'>
                     <div className="scanline"></div>
@@ -15,38 +42,44 @@ export const Layout: React.FC = ({ children }) => {
                             <nav>
                                 <ol className={style.NavBar}>
                                     <li>
-                                        <Link href="/">
+                                        <Link href={generateHref('/')}>
                                             <a>juliankrieger.dev</a>
                                         </Link>
                                     </li>
                                     -
                                     <li>
-                                        <Link href="/blog">
+                                        <Link href={generateHref('/blog')}>
                                             <a>Blog</a>
                                         </Link>
                                     </li>
                                     -
                                     <li>
-                                        <Link href="/freelancing">
+                                        <Link href={generateHref('/freelancing')}>
                                             <a>Freelancing</a>
                                         </Link>
                                     </li>
                                     -
                                     <li>
-                                        <Link href="/publications">
+                                        <Link href={generateHref('/publications')}>
                                             <a>Publications</a>
                                         </Link>
                                     </li>
                                     -
                                     <li>
-                                        <Link href="/books">
+                                        <Link href={generateHref('/books')}>
                                             <a>Books</a>
                                         </Link>
                                     </li>
                                     -
                                     <li>
-                                        <Link href="/resume">
+                                        <Link href={generateHref('/resume')}>
                                             <a>Resume</a>
+                                        </Link>
+                                    </li>
+                                    -
+                                    <li className={classNames(style.retroLink)}>
+                                        <Link href={generateHref(router.pathname, !router.query.crt)}>
+                                            <a>Click me!</a>
                                         </Link>
                                     </li>
                                 </ol>

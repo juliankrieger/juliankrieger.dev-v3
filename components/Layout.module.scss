@@ -47,3 +47,11 @@
     width: 100%;
     margin-top: auto;
 }
+
+.retroLink {
+    a, a:visited, a:active {
+        color: #ff6188;
+        font-weight: bold;
+        border: 4px dotted #ff6188;
+    }
+}
