@@ -213,48 +213,6 @@ pre {
   animation: flicker .1s infinite;
 }
 
-.crt {
-  position: fixed;
-    width: 100%;
-    left: 0;
-    top: 0;
-    z-index: 999;
-    height: 100%;
-    //font-size: max( 1rem, 2.2vmin );
-    position: relative;
-    background: #05321e;
-    background-image: radial-gradient( ellipse, #05321e 0%, #050505 90% );
-    animation: on 2s linear;
-    transition: all 0.5s;
-}
-
-.crt::after {
-  content: " ";
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  background: rgba(18, 16, 16, 0.1);
-  opacity: 0;
-  z-index: 2;
-  pointer-events: none;
-}
-.crt::before {
-  content: " ";
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
-  z-index: 2;
-  background-size: 100% 2px, 3px 100%;
-  pointer-events: none;
-}
-
 @keyframes scanline {
   0% {
       bottom: 100%;
@@ -283,14 +241,107 @@ pre {
   animation: scanline 10s linear infinite;
 }
 
-.screen {
-  position: relative;
-  background-color: colors.$color-bg;
-  width: 100%;
+
+
+
+
+
+
+
+#monitor {
+	width: 100%;
   height: 100vh;
-  border: 30px solid transparent;
-  border-image-source: url(../images/bezel.png);
-  border-image-slice: 30 fill;
-  border-image-outset: 0;
-  overflow: hidden;
+	background: #3f3933;
+	border-radius: 0.5rem;
+  
+  h1, h2, h3, h4, h5, h6, p, li, pre, code, a, a:visited, b, s, strong, i, div, span {
+    color: #5bf870 !important;
+    background-color: unset;
+  }
+
+  footer {
+    border-top-color: #5bf870;
+  }
+}
+#monitor:not(.off) {
+	box-shadow: 0.6px 90px 110px -60px #05321e; /* screen glow */
+}
+#screen {
+	position: relative;
+	//border: 30px solid transparent;
+	//border-image-source: url(../images/bezel.png);
+	//border-image-slice: 30 fill;
+	//border-image-outset: 0;
+	overflow: hidden;
+  height: 100%;
+}
+/* The screen itself + border */
+#crt,
+pre {
+	//font-family: "VT323", monospace;
+}
+#crt {
+	position: relative;
+	background: #05321e;
+	background-image: radial-gradient(
+		ellipse,
+		#05321e 0%,
+		#050505 90%
+	);
+	animation: on 2s linear;
+	transition: all 0.5s;
+	overflow: hidden;
+}
+
+#crt:after {
+	content: " ";
+	opacity: 0;
+	background: #fff;
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	width: 100%;
+	height: 100%;
+	pointer-events: none;
+	z-index: 3;
+}
+
+#crt:before {
+	content: " ";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	background: linear-gradient(
+		to bottom,
+		rgba(18, 16, 16, 0.1) 50%,
+		rgba(0, 0, 0, 0.25) 50%
+	);
+	background-size: 100% 8px;
+	z-index: 2;
+	pointer-events: none;
+	animation: fadeIn 2s;
+}
+
+/* Scanline moving top to bottom over the screen */
+.scanline {
+	width: 100%;
+	height: 100px;
+	z-index: 8;
+	background: linear-gradient(
+		0deg,
+		rgba(0, 0, 0, 0) 0%,
+		rgba(255, 255, 255, 0.2) 10%,
+		rgba(0, 0, 0, 0.1) 100%
+	);
+	opacity: 0.1;
+	position: absolute;
+	bottom: 100%;
+	pointer-events: none;
+	animation: scanline 10s linear infinite;
 }
