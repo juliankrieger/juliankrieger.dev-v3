@@ -273,7 +273,7 @@ pre {
 	border-image-source: url(../images/bezel.png);
 	border-image-slice: 30 fill;
 	border-image-outset: 0;
-	overflow: hidden;
+	overflow: auto;
   height: 100%;
 }
 /* The screen itself + border */
@@ -291,8 +291,7 @@ pre {
 	);
 	animation: on 2s linear;
 	transition: all 0.5s;
-	overflow: auto;
-  max-height: 100vh;
+	overflow: hidden;
 }
 
 #crt:after {
