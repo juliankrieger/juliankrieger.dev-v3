@@ -237,6 +237,10 @@
         background: colors.$crt-background;
         border-radius: 0.5rem;
 
+        @media screen and (max-width: 768px) {
+            padding: 0;
+        }
+
         h1,
         h2,
         h3,
@@ -272,6 +276,10 @@
             border-image-outset: 0;
             overflow: hidden;
             height: 100%;
+
+            @media screen and (max-width: 768px) {
+                border: 0px;
+            }
         }
         /* The screen itself + border */
         .crt,
@@ -337,11 +345,18 @@
             animation: scanline 10s linear infinite;
         }
 
-        .crt > div {
+        .Layout {
             height: 100%;
             overflow: auto;
             min-height: unset;
-            max-width: 98%;
+            max-width: 100%;
+            padding-right: 3rem;
+            padding-left: 3rem;
+
+            @media screen and (max-width: 1024px) {
+                padding-right: 1rem;
+                padding-left: 1rem;
+            }
         }
     }
 }
