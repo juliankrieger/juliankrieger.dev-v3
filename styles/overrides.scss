@@ -74,3 +74,22 @@ pre {
     white-space: -o-pre-wrap;    /* Opera 7 */
     word-wrap: break-word;       /* Internet Explorer 5.5+ */
 }
+
+//the scrollbar.
+::-webkit-scrollbar {
+  background: #999;
+  width: 10px;
+}
+//the draggable scrolling handle.
+
+::-webkit-scrollbar-thumb {
+    background: colors.$crt-color-secondary;
+}
+//the track (progress bar) of the scrollbar.
+::-webkit-scrollbar-track {
+  background: colors.$crt-color-secondary;
+}
+//the track (progress bar) NOT covered by the handle.
+::-webkit-scrollbar-track-piece {
+  background: colors.$crt-color-tertiary;
+}                               
