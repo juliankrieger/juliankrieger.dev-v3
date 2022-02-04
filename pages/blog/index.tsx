@@ -2,6 +2,7 @@ import { InferGetStaticPropsType, GetStaticProps } from 'next'
 import { getSortedPostsData } from '../../lib/postData';
 import Link from 'next/link'
 import { Post } from '../../types/Post';
+import { useGenerateHref } from '../../lib/useGenerateHref';
 
 export const config = {
   unstable_runtimeJS: false,
@@ -11,11 +12,14 @@ export const config = {
 // TODO: Need to fetch `posts` (by calling some API endpoint)
 //       before this page can be pre-rendered.
 function Blog({ allPostsData }: InferGetStaticPropsType<typeof getStaticProps>) {
+
+  const generateHref = useGenerateHref();
+
   return (
     <ul>
       {allPostsData.map((post: Post, idx: number) => (
         <li key={idx}>
-          <Link href={`/blog/${encodeURIComponent(post.slug)}`}>
+          <Link href={generateHref(`/blog/${encodeURIComponent(post.slug)}`)}>
             <a>- {post.date} - {post.title} {post.draft && '[DRAFT]'}</a>
           </Link>
         </li>
