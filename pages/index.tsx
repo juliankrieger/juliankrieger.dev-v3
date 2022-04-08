@@ -8,7 +8,7 @@ export default function Home() {
         <h5 className={styles.title}></h5>
           <strong>Julian Krieger</strong>
           <br />
-          <i>Fullstack Developer - Intern at Ergosign GmbH</i>
+          <i>Fullstack Developer - Integration Engineering Intern at PayPal</i>
           <br />
           <p>==============</p>
       </main>
