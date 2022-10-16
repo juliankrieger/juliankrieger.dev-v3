@@ -1,5 +1,5 @@
 ---
-title: Cyber Security Rumble > Serial.wasm
+title: [CTF] Cyber Security Rumble > Serial.wasm
 date: '2022-10-08'
 draft: false
 ---
