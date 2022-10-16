@@ -136,7 +136,7 @@ Directly testing our input field with a browser automation script framework like
 
 We can write javascript code that does the brute forcing part:
 
-```
+```js
 function doCheck(wasmRuntime) {
 
   const alpha = 'ABCDEFGHIJKLMOPQRSTUVWXYZ0123456789';
@@ -148,10 +148,7 @@ function doCheck(wasmRuntime) {
     "WASM"
   ]
 
-  for(int block = 0; i < 4; i ++) {
-
-    function* permutator(length = 4, prev = "") {
-
+  function* permutator(length = 4, prev = "") {
       if (length <= 0) {
         yield prev;
         return;
@@ -160,27 +157,30 @@ function doCheck(wasmRuntime) {
         yield* permutator(length - 1, prev + char);
     }
 
+  for(int block = 0; i < 4; i ++) {
+
     const it = permutator();
     let result = it.next();
-    while (!result.done) {
-      result = it.next();
+      while (!result.done) {
+        result = it.next();
 
 
-      const currentBlocks = [...serial];
-      currentBlocks[block] = result.value;
-      const currentString = currentBlocks.join("-");
-      wasmRuntime.validate(currentString); //0 or 1
+        const currentBlocks = [...serial];
+        currentBlocks[block] = result.value;
+        const currentString = currentBlocks.join("-");
+        wasmRuntime.validate(currentString); //0 or 1
       
       
-      const error = wasmRuntime.stdout;
-      const errStr = `ERR: Invalid key (${block + 1})`;
-      if (error !== errStr) {
-        console.log(error);
-        serial = currentString
-      }
-
+        const error = wasmRuntime.stdout;
+        const errStr = `ERR: Invalid key (${block + 1})`;
+        if (error !== errStr) {
+          console.log(error);
+          serial = currentString
+        }
     }
   }
+
+  return serial
 };
 ```
 
