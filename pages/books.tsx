@@ -72,7 +72,7 @@ export async function getStaticProps() {
     const res = await fetch(OPEN_LIBRARY_URL);
     const books: OpenLibraryResponse = await res.json();
 
-    const sortedBooks = books.reading_log_entries.sort((a, b) => a.work.title.localeCompare(b.work.title))
+    const sortedBooks = books.reading_log_entries.filter(e => !!e.work.title).sort((a, b) => a.work.title.localeCompare(b.work.title))
 
     return {
         props: {
