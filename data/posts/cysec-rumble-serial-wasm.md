@@ -1,5 +1,5 @@
 ---
-title: [CTF] Cyber Security Rumble > Serial.wasm
+title: \[CTF\] Cyber Security Rumble > Serial.wasm
 date: '2022-10-08'
 draft: false
 ---
@@ -15,7 +15,7 @@ We *can* see however, that a webassembly file is included in the website's sourc
 Contrary to compiled webassembly or assembler in general, function definitions can be read clear as day when the webassembly is still in text format. We can extract all function definitions with the `(\(func.*)` regex
 
 ```
-(func $wasi_snapshot_preview1.fd_write (;0;) (import "wasi_snapshot_preview1" "fd_write") (param i32 i32 i32 i32) (result i32))
+  (func $wasi_snapshot_preview1.fd_write (;0;) (import "wasi_snapshot_preview1" "fd_write") (param i32 i32 i32 i32) (result i32))
 (func $env.emscripten_memcpy_big (;1;) (import "env" "emscripten_memcpy_big") (param i32 i32 i32) (result i32))
 (func $env.setTempRet0 (;2;) (import "env" "setTempRet0") (param i32))
 (func $__wasm_call_ctors (;3;) (export "__wasm_call_ctors")
