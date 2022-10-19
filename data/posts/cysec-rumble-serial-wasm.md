@@ -1,14 +1,14 @@
 ---
-title: \[CTF\] Cyber Security Rumble > Serial.wasm
+title: "[CTF] Cyber Security Rumble > Serial.wasm"
 date: '2022-10-08'
 draft: false
 ---
 
-This CTF challenge focuses on a Webassembly problem. Upon opening the website in the challenges description, we are greeted with an input field in which to enter a serial key.
+This CTF challenge focuses on a WebAssembly problem. Upon opening the website in the challenge's description, we are greeted with an input field in which to enter a serial key.
 
 Entering a random string returns an error which complains about an incorrect length. Using this hint, we can see that the error changes when entering a string which is 24 characters long. However, the input field validation logic now complains about an incorrect format. 
 
-After several trial and error attempts fail, now is the time to actually look into how the serial validation works. When inspecting the site with chrome's developer tools, we can see that there is an `onchange` handler listening for changes inside the input field. Upon closer inspection of the input handler and the prettyfied js code it talks to, we can be pretty sure that `Serial.wasm` is written in `React` and `MUI`, a react component library. Further analysis is made hard by the fact that the original javascript was obviously messed with, most likely in the build tool's production pipeline by minifying and compressing the code. Variable names are shortened and we can't see the original project layout. What we also can not find in our javascript code are any references to the error message we can read when entering an incorrect serial.
+After several trial and error attempts fail, now is the time to actually look into how the serial validation works. When inspecting the site with chrome's developer tools, we can see that there is an `onchange` handler listening for changes inside the input field. Upon closer inspection of the input handler and the prettified Javascript code it talks to, we can be pretty sure that `Serial.wasm` is written in `React` and `MUI`, a React component library. Further analysis is made hard by the fact that the original Javascript was obviously messed with, most likely in the build tool's production pipeline, by minifying and compressing the code. Variable names are shortened, and we can't see the original project layout. What we also can not find in our Javascript code are any references to the error message we can read when entering an incorrect serial.
 
 We *can* see however, that a webassembly file is included in the website's source tab. When downloading and opening it, we are greeted with a `WAT` file instead of a webassembly file. This makes our future work a bit easier, but if the file was compiled `WASM` we could still reverse it. The file is 8400 lines long, so we could assume that the WASM file is obfuscated as well, in this case with indirection and dead end functions.
 
@@ -116,7 +116,7 @@ ERR: Invalid key (1)
 0123456789ABCDEF
 ```
 
-Aha. There are a couple of really interesting things to be found here that make solving the challenge an absolute breeze. First off, we can observe that the error messages we missed in the websites javascript sources can all be found here. From them, we can conclude a couple of things:
+Aha. There are a couple of really interesting things to be found here that make solving the challenge an absolute breeze. First off, we can observe that the error messages we missed in the websites Javascript sources can all be found here. From them, we can conclude a couple of things:
 
 - The serial key has a suffix
 - The serial key as a valid format 
@@ -132,9 +132,9 @@ Entering that string into the browser's input field (which call the validate fun
 
 Since we want to avoid reversing the validation subfunctions for each of our serial key's parts, we can now think about bruteforcing the serial key. Brute forcing an entire 16 character key is impossible, but brute forcing 4 different 4 character packages should be pretty fast, depending on the character set. To make things easier, we assume for a start that the serial key is made up out of upper case letters and numbers, like most serial keys seem to be. 
 
-Directly testing our input field with a browser automation script framework like puppeteer or playwright would be way to slow. What we can do, is inspecting the place where the validate function is imported in our client javascript in the browser, place a breakpoint and then call the validate function directly. 
+Directly testing our input field with a browser automation script framework like puppeteer or playwright would be way to slow. What we can do, is inspecting the place where the validate function is imported in our client Javascript in the browser, place a breakpoint and then call the validate function directly. 
 
-We can write javascript code that does the brute forcing part:
+We can write Javascript code that does the brute forcing part:
 
 ```js
 function doCheck(wasmRuntime) {
