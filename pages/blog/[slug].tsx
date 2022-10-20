@@ -39,7 +39,17 @@ function Post({ post, source }: PostProps) {
 
             const {alt: options, ...restProps} = props;
             return <MarkdownImage {...restProps} options={options}></MarkdownImage>
-          }
+          },
+          code: (props: React.HTMLProps<HTMLDivElement>) => {
+            const {className} = props;
+            const newCl = className ?? "language-any";
+            return <code {...props} className={newCl}></code>
+          },
+          pre: (props: React.HTMLProps<HTMLPreElement>) => {
+            const {className} = props;
+            const newCl = className ?? "language-any";
+            return <pre {...props} className={newCl}></pre>
+          },
         }} />
       </div>
         
