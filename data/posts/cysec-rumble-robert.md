@@ -1,7 +1,7 @@
 ---
 title: "[CTF] Cyber Security Rumble > RoberIsAGangsta" 
 date: '2021-09-25'
-draft: false
+draft: true
 ---
 
 This CTF challenge is actually a three parter. We can download the repo from [insert link here]().

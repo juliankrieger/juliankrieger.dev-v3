@@ -126,7 +126,9 @@ The last part is a bit iffy: We know that our string needs to fit a certain form
 
 If we combine that information with our assumption about the delimiter and the fact that generally delimited serial keys are separated with the `-` character, we can assume that perhaps our serial key needs to match the following format:
 
-`0000-0000-0000-0000-WASM`
+```
+0000-0000-0000-0000-WASM
+```
 
 Entering that string into the browser's input field (which call the validate function), we can see that the error changes! It now reports `Invalid key (1)`, indicating that the format is correct. This leads us to our next problem: The first 4 characters of the key are incorrect.
 
@@ -188,7 +190,7 @@ Waiting for the debugger to hit our breakpoint when entering an input string, we
 
 This yields a lot of serial keys. Upon entering any 1 of our choosing, we get the key and complete the challenge!
 
-Turns out, this challenge could've been solved even better: Take a look at our string dump again. Notice something at the very bottom? If you think you got it, click the summary below.
+Turns out, this challenge could've been solved even better: Take a look at our string dump again. Notice something at the very bottom? If you think you got it, open the solution below.
 
 <details>
   <summary>Solution</summary>
