@@ -78,7 +78,7 @@ export const Layout: React.FC = ({ children }) => {
                             </svg>
                             </a>
 
-                            <a href="mailto:julian.krieger@me.com">julian.krieger@me.com
+                            <a href="mailto">julian.krieger(<at>)me.com
                             </a>
 
                             <b>opinions are my own
