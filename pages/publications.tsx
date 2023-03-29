@@ -10,6 +10,12 @@ export const Publications: React.FC = () => {
             <h2>Publications</h2>
             <div className={style.GalleryGrid}>
                 <PublicationItem
+                title={"Programming Languages and Target Platforms in Malware - A Trend Analysis"}
+                description={"Language: English - Paper exploring how increasingly popular programming languages affects the malware industry."}
+                date="15 Feb, 2023"
+                url={"/programming_language_malware_trends.pdf"}
+                />
+                <PublicationItem
                 title={"About the correlation between website loading speeds and user bounce rates"} 
                 description="Language: German - Paper exploring the correlation between how long it takes a website to load its content and the eagerness of users to cancel loading and subsequently leaving the site early." 
                 date="15 July, 2019"
