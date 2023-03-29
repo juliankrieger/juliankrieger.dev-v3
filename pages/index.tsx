@@ -8,7 +8,7 @@ export default function Home() {
         <h5 className={styles.title}></h5>
           <strong>Julian Krieger</strong>
           <br />
-          <i>Fullstack Developer - Rust Enthusiast</i>
+          <i>Fullstack Developer - Site Reliability Engineer - Rust & Go Enthusiast</i>
           <br />
           <p>==============</p>
       </main>
